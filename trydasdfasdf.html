@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="http://192.168.1.130/sentric_dev/Modules/Store/Resources/assets/css/style.css">
+
+   
+  <meta charset="UTF-8">
+
+  <title>Testing SVG for Everybody</title>
+
+  <style>
+
+.tr_appand{
+    background-color: red !important;
+  }
+  .append_div_tr{
+    display: none;
+  }
+
+
+
+.container_check_mark {
+  display: block;
+  position: relative;
+  margin-bottom: 18px !important;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 27px !important;
+}
+
+/* Hide the browser's default checkbox */
+.container_check_mark input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container_check_mark:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container_check_mark input:checked ~ .checkmark {
+  background-color: #41307c;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container_check_mark input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container_check_mark .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.table_serach_bar{
+  margin-bottom: 3rem;
+}
+
+
+.left_tab_check_filter{
+
+    padding: 6rem 2rem 2rem 2rem;
+}
+
+.width_100per{
+  width: 100% !important;
+}
+
+.left_tab_check_filter .cd-filter-content{
+  padding-left: 3rem
+}
+
+.table_serach_bar input{
+  border-radius: 16px;
+  height: 38px;
+}
+
+
+.filter_table tr td{
+
+  border-top: none !important
+}
+
+.right_product_table_fil{
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px 0px 0px 0px;
+    box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.11);
+}
+
+
+.right_product_table_fil .dataTables_length,
+.right_product_table_fil  .dataTables_info,
+.right_product_table_fil .dataTables_paginate{
+  display: none !important
+}
+
+.filter_table .table_thead{
+  display: none;
+}
+
+
+  
+  </style>
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+</body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="col-md-12 col-xs-12" id="sidenab">
+                <div class="cd-main-content">
+                  <div class="cd-filter filter-is-visible width_100per">
+                    <div id="select-submenuid" class="left_tab_check_filter">
+                      <div class="cd-filter-block">
+                        <h4 class="closed">Tipologia</h4>
+                        <div class="cd-filter-content cd-filters list"  style="display: none;">
+                             <div class="" id="shapes">
+                                <div class="checkbox">
+                                  <label class="container_check_mark">All
+                                    <input type="checkbox" value="all"  class="all">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for All -->
+                                <div class="checkbox">
+                                  <label class="container_check_mark">Square
+                                    <input type="checkbox" value="Square" >
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for square -->
+                                <div class="checkbox">
+                                  <label class="container_check_mark">Circle
+                                    <input type="checkbox" value="Circle">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for circle -->
+                              </div>
+                          
+                        </div>
+                        <!-- end first tab -->
+                      </div>
+                      <div class="cd-filter-block">
+                        <h4 class="closed">Categoria</h4>
+                          <div class="cd-filter-content cd-filters list" style="display: none;">
+                            <div class="">
+                              <div class="" id="colors">
+                                <div class="checkbox">
+                                  <label class="container_check_mark">All
+                                    <input type="checkbox" value="All" class="all">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for all -->
+                                <div class="checkbox">
+                                  <label class="container_check_mark">Blue
+                                    <input type="checkbox" value="Blue">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for blue -->
+                                <div class="checkbox">
+                                  <label class="container_check_mark">Red
+                                    <input type="checkbox" value="Red">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for Red -->
+                              </div>
+                            </div>
+                          </div>
+                        <!-- end second -->
+                      </div>
+                      <div class="cd-filter-block">
+                        <h4 class="closed">Marca</h4>
+                        <div class="cd-filter-content cd-filters list" style="display: none;">
+                          <div class="">
+                            <div class="" id="sizes">
+                                <div class="checkbox">
+                                  <label class="container_check_mark">All
+                                    <input type="checkbox" value="all" class="all">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for all -->
+                                <div class="checkbox">
+                                  <label class="container_check_mark">3
+                                    <input type="checkbox" value="3">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for 3 -->
+                                <div class="checkbox">
+                                  <label class="container_check_mark">5
+                                    <input type="checkbox" value="5">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                </div>
+                                <!-- end for 5 -->
+                              </div>
+                            </div>
+                          </div> 
+                        </div>
+              
+
+                          
+                      <div>
+                        <button type="reset" class="btn-as-a-tag" onclick="searchProductListById()">
+                          Rimuovi tutti i filtri
+                        </button>
+                      </div>
+                    </div> 
+                    <span class="cd-close"><i class="fa fa-close"></i></span>
+                  </div> <!-- cd-filter -->
+                  <a href="#0" class="cd-filter-trigger">Filters</a>
+                </div>
+              </div>
+
+        
+         
+    </div>
+    <!-- end col-md-4 for check box filter left side -->
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+      <div class="row">
+        <div class="col-md-12 table_serach_bar">
+          <input class="form-control" id="textSearch" placeholder="Search" />
+        </div>
+      </div>
+      <!-- end for search bar -->
+      <!-- start data table -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="right_product_table_fil">
+           
+              <table id="example" class="table filter_table">
+                <thead class="table_thead">
+                  <tr>
+                    <th>Shape</th>
+                    <th>Color</th>
+                    <th>Size</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p id="click_for_show_tr">open</p>
+                    </td>
+                    <td>Blue</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td>Square</td>
+                    <td>Red</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Circle</td>
+                    <td>Blue</td>
+                    <td>3</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+           
+          </div>
+        </div>
+      </div>
+      <!-- end data table -->
+    </div>
+    <!-- end col-md-8 for table right side -->
+  </div>
+</div>
+
+
+
+<!-- ======================================================================================================================= -->
+
+
+          
+
+
+<!-- ======================================================================================================================= -->
+
+
+<!-- after click show content -->
+  <div id="show_tr" class="append_div_tr">
+      <h1>kalpesh</h1>
+ </div>
+<!-- end after click show content -->
+</body>
+
+ 
+<script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>  
+<script type = "text/javascript" src = "https://cdn.datatables.net/r/dt/dt-1.10.9/datatables.min.js" ></script>    
+
+<script type="text/javascript">
+  // Using the module pattern for a jQuery feature
+$(function() {
+    var app = (function() {
+      var checkboxInput = ' input[type="checkbox"]',
+          filters = {},rowData = [],values = [],key, value, show, length, divId;
+      
+      var init = function() {
+        app.table = $('#example').DataTable({
+          "dom": "lrtip" // hide default DataTable search box
+        });
+
+        $("#textSearch").on('keyup change', function() {
+          console.log('text search for: ' + $(this).val());
+          app.table.search($(this).val()).draw();
+        });
+        
+        $(checkboxInput).prop('unchecked', true);
+        
+        $(checkboxInput).change(function() {
+          var that = $(this);
+          if(that.hasClass('all')) {
+            $('#' + getFilterCategoryId(that) + checkboxInput).prop('checked', that.prop('checked'));
+          } else {
+            var allInput = $('#' + getFilterCategoryId(that) + checkboxInput + ':first');
+            if(allInput.is(':checked')) {
+              allInput.prop('checked', false);
+            }
+          }
+          poulateAndApplyFilters();
+        });
+      };
+      
+      var poulateAndApplyFilters = function() {
+        populateFilterValues();
+        applyFiltersToTable();
+      };
+      
+      var getFilterCategoryId = function(elem) {
+        divId = elem.parent().parent().parent()[0].id;
+        console.log('divId is: ' + divId);
+        return divId;
+      };
+      
+      var trimAndLower = function(elem) {
+        return elem.toLowerCase().trim();
+      };
+      
+      var populateFilterValues = function() {
+        console.log('Populating filter values');
+        $(checkboxInput).each(function() {
+          if ($(this).is(":checked") && $(this).val() !== "all") { 
+            value = trimAndLower($(this).val());
+            key = getFilterCategoryId($(this));
+            console.log('key: ' + key + ', value: ' + value);
+            if (filters[key] === undefined) { 
+              console.log('Filter category is missing from object. Now creating new filter');
+              values.push(value);
+              filters[key] = values;
+            } else {
+              console.log('Filter category is already existing in object');
+              filters[key].push(value);
+            }
+            values = [];
+          }
+        });
+        console.log('Filter population complete');
+      };
+      
+      var populateRowData = function(row) {
+        row.find('td').each(function() {
+          console.log('Populating row data with ' + $(this).text());
+          rowData.push(trimAndLower($(this).text()));
+        });
+      };
+      
+      var applyFiltersToTable = function() {
+        console.log('Applying filters to table');
+        if (filters[key] === undefined) {
+          // show all table rows when no checkboxes are selected
+          $("table tbody tr").show(); 
+        } else {
+          $("table tr").each(function() {
+            // initialize 'show' variable to false for each table row
+            show = false; 
+            populateRowData($(this));
+            // make sure 'rowData' array has elements
+            if (rowData.length > 0) {
+              // loop through each key in 'filters' object
+              for (var k in filters) { 
+                if (filters.hasOwnProperty(k)) {
+                  console.log('filter key: ' + k);
+                  length = filters[k].length;
+                  // loop through each array value at index 'i'
+                  for (var i = 0; i < length; i++) { 
+                    value = filters[k][i];
+                    if (rowData.indexOf(value) !== -1) { 
+                      show = true;
+                      break;
+                    }
+                  }
+                  if (show) {
+                    $(this).show();
+                  } else {
+                    $(this).hide();
+                    break;
+                  }
+                  show = false;
+                }
+              }
+            }
+            rowData = [];
+          });
+          filters = {};
+        }
+      };
+      
+      return {
+        init: init
+      };
+    })();
+    
+    app.init();
+
+
+
+});
+    
+
+  
+  $('#click_for_show_tr').bind('click', function(){
+         
+          if (! $(this).hasClass("active_tr") ) {
+
+              $(this).addClass("active_tr");
+
+             let show_tr_div = document.getElementById('show_tr').innerHTML
+            $("<tr class='tr_appand'> <td colspan='10'>  " + show_tr_div + " </td> </tr>").insertAfter($(this).closest('tr'));
+              $(".append_div_tr").css("display","block");
+
+          }
+
+            else if  ($(this).hasClass("active_tr") ) {
+              
+              $(this).removeClass("active_tr");
+
+                $(".tr_appand").css("display","none");
+                
+          }
+      });
+
+
+</script>
+
+
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+    //open/close lateral filter
+    $('.cd-filter-trigger').on('click', function(){
+        triggerFilter(true);
+    });
+    // $('.cd-filter .cd-close').on('click', function(){
+    //     triggerFilter(false);
+    // });
+
+    function triggerFilter($bool) {
+        var elementsToTrigger = $([$('.cd-filter-trigger'), $('.cd-filter'), $('.cd-tab-filter'), $('.cd-gallery')]);
+        elementsToTrigger.each(function(){
+            $(this).toggleClass('filter-is-visible', $bool);
+        });
+    }
+
+    //mobile version - detect click event on filters tab
+    var filter_tab_placeholder = $('.cd-tab-filter .placeholder a'),
+        filter_tab_placeholder_default_value = 'Select',
+        filter_tab_placeholder_text = filter_tab_placeholder.text();
+    
+    $('.cd-tab-filter li').on('click', function(event){
+        //detect which tab filter item was selected
+        var selected_filter = $(event.target).data('type');
+            
+        //check if user has clicked the placeholder item
+        if( $(event.target).is(filter_tab_placeholder) ) {
+            (filter_tab_placeholder_default_value == filter_tab_placeholder.text()) ? filter_tab_placeholder.text(filter_tab_placeholder_text) : filter_tab_placeholder.text(filter_tab_placeholder_default_value) ;
+            $('.cd-tab-filter').toggleClass('is-open');
+
+        //check if user has clicked a filter already selected 
+        } else if( filter_tab_placeholder.data('type') == selected_filter ) {
+            filter_tab_placeholder.text($(event.target).text());
+            $('.cd-tab-filter').removeClass('is-open'); 
+
+        } else {
+            //close the dropdown and change placeholder text/data-type value
+            $('.cd-tab-filter').removeClass('is-open');
+            filter_tab_placeholder.text($(event.target).text()).data('type', selected_filter);
+            filter_tab_placeholder_text = $(event.target).text();
+            
+            //add class selected to the selected filter item
+            $('.cd-tab-filter .selected').removeClass('selected');
+            $(event.target).addClass('selected');
+        }
+    });
+    
+    //close filter dropdown inside lateral .cd-filter 
+    $('.cd-filter-block h4').on('click', function(){
+        $(this).toggleClass('closed').siblings('.cd-filter-content').slideToggle(300);
+    })
+
+    //fix lateral filter and gallery on scrolling
+    // $(window).on('scroll', function(){
+    //     (!window.requestAnimationFrame) ? fixGallery() : window.requestAnimationFrame(fixGallery);
+    // });
+
+    function fixGallery() {
+        var offsetTop = $('.cd-main-content').offset().top,
+            scrollTop = $(window).scrollTop();
+        ( scrollTop >= offsetTop ) ? $('.cd-main-content').addClass('is-fixed') : $('.cd-main-content').removeClass('is-fixed');
+    }
+
+    /************************************
+        MitItUp filter settings
+        More details: 
+        https://mixitup.kunkalabs.com/
+        or:
+        http://codepen.io/patrickkunka/
+    *************************************/
+
+    buttonFilter.init();
+    $('.cd-gallery ul').mixItUp({
+        controls: {
+            enable: false
+        },
+        callbacks: {
+            onMixStart: function(){
+                $('.cd-fail-message').fadeOut(200);
+            },
+            onMixFail: function(){
+                $('.cd-fail-message').fadeIn(200);
+            }
+        }
+    });
+
+    //search filtering
+    //credits http://codepen.io/edprats/pen/pzAdg
+    var inputText;
+    var $matching = $();
+
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+            clearTimeout (timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
+    $(".cd-filter-content input[type='search']").keyup(function(){
+        // Delay function invoked to make sure user stopped typing
+        delay(function(){
+            inputText = $(".cd-filter-content input[type='search']").val().toLowerCase();
+            // Check to see if input field is empty
+            if ((inputText.length) > 0) {            
+                $('.mix').each(function() {
+                    var $this = $(this);
+                
+                    // add item to be filtered out if input text matches items inside the title   
+                    if($this.attr('class').toLowerCase().match(inputText)) {
+                        $matching = $matching.add(this);
+                    } else {
+                        // removes any previously matched item
+                        $matching = $matching.not(this);
+                    }
+                });
+                $('.cd-gallery ul').mixItUp('filter', $matching);
+            } else {
+                // resets the filter to show all item if input is empty
+                $('.cd-gallery ul').mixItUp('filter', 'all');
+            }
+        }, 200 );
+    });
+});
+
+/*****************************************************
+    MixItUp - Define a single object literal 
+    to contain all filter custom functionality
+*****************************************************/
+var buttonFilter = {
+    // Declare any variables we will need as properties of the object
+    $filters: null,
+    groups: [],
+    outputArray: [],
+    outputString: '',
+  
+    // The "init" method will run on document ready and cache any jQuery objects we will need.
+    init: function(){
+        var self = this; // As a best practice, in each method we will asign "this" to the variable "self" so that it remains scope-agnostic. We will use it to refer to the parent "buttonFilter" object so that we can share methods and properties between all parts of the object.
+    
+        self.$filters = $('.cd-main-content');
+        self.$container = $('.cd-gallery ul');
+    
+        self.$filters.find('.cd-filters').each(function(){
+            var $this = $(this);
+          
+            self.groups.push({
+                $inputs: $this.find('.filter'),
+                active: '',
+                tracker: false
+            });
+        });
+        
+        self.bindHandlers();
+    },
+  
+    // The "bindHandlers" method will listen for whenever a button is clicked. 
+    bindHandlers: function(){
+        var self = this;
+
+        self.$filters.on('click', 'a', function(e){
+            self.parseFilters();
+        });
+        self.$filters.on('change', function(){
+          self.parseFilters();           
+        });
+    },
+  
+    parseFilters: function(){
+        var self = this;
+     
+        // loop through each filter group and grap the active filter from each one.
+        for(var i = 0, group; group = self.groups[i]; i++){
+            group.active = [];
+            group.$inputs.each(function(){
+                var $this = $(this);
+                if($this.is('input[type="radio"]') || $this.is('input[type="checkbox"]')) {
+                    if($this.is(':checked') ) {
+                        group.active.push($this.attr('data-filter'));
+                    }
+                } else if($this.is('select')){
+                    group.active.push($this.val());
+                } else if( $this.find('.selected').length > 0 ) {
+                    group.active.push($this.attr('data-filter'));
+                }
+            });
+        }
+        self.concatenate();
+    },
+  
+    concatenate: function(){
+        var self = this;
+    
+        self.outputString = ''; // Reset output string
+    
+        for(var i = 0, group; group = self.groups[i]; i++){
+            self.outputString += group.active;
+        }
+    
+        // If the output string is empty, show all rather than none:    
+        !self.outputString.length && (self.outputString = 'all'); 
+    
+        // Send the output string to MixItUp via the 'filter' method:    
+        if(self.$container.mixItUp('isLoaded')){
+            self.$container.mixItUp('filter', self.outputString);
+        }
+    }
+};
+
+  var busy = false;
+      var limit = 5;
+      var offset = 0;
+      var lasttitle = '';
+      
+      function searchProductListById(){
+        setTimeout(function(){
+            $inputdata = {"_token": $('#token').val()}   
+            $("#select-submenuid").find("input[type='checkbox']:checked").each(function(index,element){  
+                // alert( $(element).attr("id") +" "+$(element).attr("name"));
+                $attributecode = $(element).attr("name");
+                $attribute_optionid = $(element).attr("id");
+                $inputdata[$attribute_optionid] = $attributecode;  
+            });
+            console.log($inputdata);
+            $.ajax({
+                type:'POST',
+                data:$inputdata,
+                url:'product_search_list',
+                beforeSend: function() {
+                    $('#loader_image1').show();
+                },
+                success:function(data) {
+                    $('#loader_image1').hide();
+                    $("#product_container").empty().html(data);
+                }
+            });
+        }, 500);
+    }
+
+      function displayRecords(limit1, offset1,lasttitle1) {
+        if(lasttitle1 === undefined)
+        {
+            $("#loader_message1").html('<button class="btn btn-default" type="button">No more records.</button>').show()
+        }else
+        {
+
+            $.ajax({
+              type: "GET",
+              async: false,
+              url: "productslist",
+              data: {'limit': limit1,'offset':offset1,'title': lasttitle1},
+              cache: false,
+              beforeSend: function() {
+                $("#loader_message1").html("").hide();
+                $('#loader_image1').show();
+               },
+              success: function(data) {
+                  console.log(data);
+
+                $("#product_container").append(data);
+                $('#loader_image1').hide();
+                if (data== "") {
+                  $("#loader_message1").html('<button class="btn btn-default" type="button">No more records.</button>').show()
+                } else {
+                            //  var na = $('#lastname').val();
+                    $("#loader_message1").html('<button class="btn btn-default" type="button">Loading please wait...</button>').show();
+                       
+                }
+                 window.busy = false;
+
+
+              }
+            });
+            $inputdata = {"_token": $('#token').val()}   
+            $.ajax({
+              type: "GET",              
+              url: "all_product",        
+              data:$inputdata,
+              success: function(data) {
+                console.log(data);
+                  $("#all_product_json").val(data);
+
+              }
+            });
+
+        }
+      }
+
+      $(document).ready(function() {
+        // start to load the first set of data
+        if (busy == false) {
+          busy = true;
+          // start to load the first set of data
+          displayRecords(limit, offset,lasttitle);
+        }
+
+
+        $(window).scroll(function() {
+           // alert("a");
+          // make sure u give the container id of the data to be loaded in.
+          if ($(window).scrollTop() + $(window).height() > $("#product_container").height() && !busy) {
+            busy = true;
+            offset = limit + offset;
+           var id = $('.last_title').children().last().attr('id');
+           lasttitle2=$("#"+id).val();
+            //  alert("ss"+lasttitle2);
+            // this is optional just to delay the loading of data
+            setTimeout(function() { displayRecords(limit, offset,lasttitle2); }, 500);
+
+            // you can remove the above code and can use directly this function
+            // displayRecords(limit, offset);
+
+          }
+        });
+        $("#myInput").keyup(function(){  
+            //alert(this.value);
+            var input=this.value;
+             var data=$("#all_product_json").val();
+             var product=[];
+             var availableTags=[];
+             data = $.parseJSON(data);
+                $.each(data, function (i,v)
+                {                    
+                    var n=v.includes(input);
+                    if(n==true)
+                    {
+                         
+                        availableTags.push(v);
+                    }
+                    //alert(n);
+
+                });
+                //console.log("+"+availableTags);
+                
+                 $( "#myInput" ).autocomplete({
+                    source: availableTags
+                  });
+                
+        });  
+
+      });
+
+
+
+    </script>
+
+</html>
+
+
+<!--  <use xlink:href="sprites.svg#togo" /> -->
