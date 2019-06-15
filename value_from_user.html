@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Testing SVG for Everybody</title>
+
+  <style>
+
+  </style>
+
+
+
+</head>
+<body>
+
+<p>value from user</p>
+
+
+<input id="one"  type="text">
+<input  id="two" type="text">
+<span id="total"></span>
+<br>
+<br>
+<button type="button" onclick="add();">add</button>
+<button type="button" onclick="minus();">minus</button>
+</body>
+
+<script>
+
+function add(){
+var x = + document.getElementById('one').value  + + document.getElementById('two').value
+  document.getElementById('total').innerHTML=x;
+}
+
+function minus() {
+   var minus_value =  document.getElementById('one').value - document.getElementById('two').value
+   document.getElementById('total').innerHTML= minus_value;
+}
+
+
+
+
+</script>
+
+
+</html>
+
+
+<!--  <use xlink:href="sprites.svg#togo" /> -->
